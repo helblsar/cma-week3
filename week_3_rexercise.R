@@ -147,22 +147,22 @@ Frechet<- c(Frechet(traj_1, traj_2, testLeash=-1),Frechet(traj_1, traj_3, testLe
 LCSS<- c(LCSS(traj_1,traj_2, 2, 2, 0.5),LCSS(traj_1,traj_3, 2, 2, 0.5),
          LCSS(traj_1,traj_4, 2, 2, 0.5),LCSS(traj_1,traj_5, 2, 2, 0.5),
          LCSS(traj_1,traj_6, 2, 2, 0.5))
-r_nr<-c(2:5)
+r_nr<-c(2:6)
 similarities<-data.frame(r_nr,DTW,EditDist,Frechet,LCSS)
 
 
 
 dtw<-ggplot(similarities) +
-  geom_bar(aes(x=r_nr, y=DTW, fill=DTW), stat="identity")+
+  geom_bar(aes(x=r_nr, y=DTW, fill=r_nr), stat="identity")+
   theme(legend.position="none")
 editdist<-ggplot(similarities) +
-  geom_bar(aes(x=r_nr, y=EditDist, fill=EditDist), stat="identity")+
+  geom_bar(aes(x=r_nr, y=EditDist, fill=r_nr), stat="identity")+
   theme(legend.position="none")
 frechet<-ggplot(similarities) +
-  geom_bar(aes(x=r_nr, y=Frechet, fill=Frechet), stat="identity")+
+  geom_bar(aes(x=r_nr, y=Frechet, fill=r_nr), stat="identity")+
   theme(legend.position="none")
 lcss<-ggplot(similarities) +
-  geom_bar(aes(x=r_nr, y=LCSS, fill=LCSS), stat="identity")+
+  geom_bar(aes(x=r_nr, y=LCSS, fill=r_nr), stat="identity")+
   theme(legend.position="none")
 ggarrange(dtw, editdist, frechet, lcss,
           labels=c("DTW","EditDist","Frechet","LCSS"),
